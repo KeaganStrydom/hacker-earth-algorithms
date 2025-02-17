@@ -11,8 +11,8 @@ for case in range(0, t):
     # Get length and cost
     N, X = map(int, input().split(" "))
 
-    S = input()
-    T = input()
+    S = list(input())
+    T = list(input())
     cost = 0;
 
     for i in range(0, N):
@@ -28,6 +28,12 @@ for case in range(0, t):
                 
                 flipAny(i, j, S)
                 break; # Currently not equal
+
+            if (j == N-1):
+                cost = -1
+
+
+    print(cost)
                 
 
 
