@@ -3,15 +3,17 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-
-        for i in range(0, m):
-            for j in range(0, len(nums2) - 1):
-                if nums2[j] < nums1[i]:
-                    # Pop and insert
-                    nums1.insert(nums2[j], i)
-                    nums1.pop(-1) # Delete last element
-                    nums2.pop(0)
-                    
-        for i in range(0, len(nums2)):
-            removed = n - len(nums2)
-            nums1[i + m + removed] = nums2[i]
+        removed = 0
+        i = m - 1
+        j = n - 1
+        while (j >= 0):
+            if nums2[j] >= nums1[i]:
+                nums1.insert(i + 1, nums2[j])
+                nums1.pop(-1)
+                j -= 1
+            elif (i > 0):
+                i -= 1
+            else:
+                nums1.insert(0, nums2[j])
+                nums1.pop(-1)
+                j -= 1
